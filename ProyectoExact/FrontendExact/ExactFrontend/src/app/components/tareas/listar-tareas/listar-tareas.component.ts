@@ -41,13 +41,11 @@ export class ListarTareasComponent implements OnInit {
   }
 
   toggleSelection(row: Tareas) {
-    // Cambiar el estado de la tarea
+    row.seleccionado = !row.seleccionado;
     row.estado = row.seleccionado ? 'finalizado' : 'en proceso';
 
-    // Actualizar la tarea en el servidor
     this.tS.update(row).subscribe(() => {
       console.log('Tarea actualizada');
-      // Refrescar los datos después de la actualización
       this.refreshData();
     });
   }
